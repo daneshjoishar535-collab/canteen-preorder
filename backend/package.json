@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
+    "dev:offline": "MONGO_URI=mongodb://127.0.0.1:27017/canteen node --watch server.js",
     "seed": "node scripts/seed.js",
+    "seed:offline": "MONGO_URI=mongodb://127.0.0.1:27017/canteen node scripts/seed.js",
     "smoke": "node scripts/smoke-test.js"
   },
   "engines": {
