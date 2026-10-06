@@ -20,6 +20,8 @@ canteen-preorder/
 
 ## 1. Run locally
 
+> Step-by-step Mac guide (live, offline, local): see **RUN_GUIDE.docx / RUN_GUIDE.md**, or just double-click `start-offline.command`, `start-online.command`, `open-live.command`, `stop-local.command`.
+
 Prerequisites: Node 18+, a free MongoDB Atlas cluster.
 
 ```bash
