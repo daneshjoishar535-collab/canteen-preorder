@@ -27,7 +27,7 @@ Prerequisites: Node 18+, a free MongoDB Atlas cluster.
 cd backend
 cp .env.example .env        # fill MONGO_URI and JWT_SECRET
 npm install
-npm run seed                # optional: demo data (admin@canteen.com / admin123, student@college.edu / student123)
+npm run seed                # demo data + slots for today and the next 2 days (admin@canteen.com / admin123, student@college.edu / student123)
 npm run dev                 # http://localhost:5001
 
 # Frontend (new terminal)
@@ -47,6 +47,21 @@ cd backend && npm run smoke
 > If login shows "Cannot reach the API…": is the backend running (`curl localhost:5001/health`)? Does `frontend/.env` say `VITE_API_URL=http://localhost:5001/api`? Restart `npm run dev` after editing `.env`.
 
 MongoDB Atlas: create cluster → Database Access (create user) → Network Access (allow your IP, or 0.0.0.0/0 for Render) → Connect → Drivers → copy the string into `MONGO_URI` and add a database name (`/canteen`).
+
+### Offline mode (no internet)
+
+Needs a local MongoDB (`brew services start mongodb-community@8.0`). The backend then uses `mongodb://127.0.0.1:27017/canteen` instead of Atlas:
+
+```bash
+cd backend && npm run seed:offline   # first time / fresh slots
+npm run dev:offline                  # API on http://localhost:5001
+cd ../frontend && npm run dev        # UI on http://localhost:5173
+```
+
+### Live deployment
+
+- Frontend: https://canteen-preorder-six.vercel.app
+- API: https://canteen-api-v1ga.onrender.com (health: `/health`)
 
 ## 2. API summary
 
